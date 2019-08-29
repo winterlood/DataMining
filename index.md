@@ -45,6 +45,17 @@ x,y,z 축은 곧 Attribute이다.
 
 요구한다.
 
+즉 한마디로, 해당 Domain의 특성을 나타낼 수 있는 값이다.
+
+Attribute는 다음과 같은 분류로 나뉠 수 있다.
+
+1. Nummeric (수치)
+
+> Ex> Attribute (온도) -> Value (10 or 20 or 30)
+
+2. Nominal (구간, Categorical)
+
+> Ex> Attribute (Age) -> Value (young or pre-prebyopic)
 
 Feature
 ---
