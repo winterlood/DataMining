@@ -10,6 +10,9 @@ DataMining이란 ?
 
 Pattern
 ---
+
+학습된 데이터를 통해 알아 낼 수 있는 일반적인 규칙!
+
 새로운 데이터를 예측할 수 있도록 하는것에 의의를 둔다.
 > Ex> 나이가 많고 노안이 진행된 사람에게 어떤 렌즈를 추천해야 할것인가? 
 
@@ -56,6 +59,8 @@ Attribute는 다음과 같은 분류로 나뉠 수 있다.
 2. Nominal (구간, Categorical)
 
 > Ex> Attribute (Age) -> Value (young or pre-prebyopic)
+
+
 
 Feature
 ---
