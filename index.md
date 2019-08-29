@@ -61,7 +61,6 @@ Attribute는 다음과 같은 분류로 나뉠 수 있다.
 > Ex> Attribute (Age) -> Value (young or pre-prebyopic)
 
 
-
 Feature
 ---
 
