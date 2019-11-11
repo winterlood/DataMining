@@ -119,7 +119,7 @@
                                     </Border>
                                     <StackPanel Height="466">
                                         <Border Background="White"
-								Height="63" Margin="7,31,10,0">
+								Height="63" Margin="7,8,10,0">
 
                                             <StackPanel Orientation="Horizontal" 
 												>
@@ -141,7 +141,7 @@
                                             </StackPanel>
                                         </Border>
                                         <Border Background="White"
-								Height="63" Margin="7,31,10,0">
+								Height="63" Margin="7,8,10,0">
 
                                             <StackPanel Orientation="Horizontal" 
 												>
@@ -163,7 +163,7 @@
                                             </StackPanel>
                                         </Border>
                                         <Border Background="White"
-								Height="63" Margin="7,31,10,0">
+								Height="63" Margin="7,8,10,0">
 
                                             <StackPanel Orientation="Horizontal" 
 												>
@@ -185,7 +185,7 @@
                                             </StackPanel>
                                         </Border>
                                         <Border Background="White"
-								Height="63" Margin="7,31,10,0">
+								Height="63" Margin="7,8,10,0">
 
                                             <StackPanel Orientation="Horizontal" 
 												>
@@ -209,9 +209,36 @@
                                                                         BorderBrush="Black"
                                                                         Margin="7,6,73,1" Width="18">
                                                                     <CheckBox   x:Name="MVChk" Margin="0,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
-                                                                        
+
                                                                     </CheckBox>
                                                                 </Border>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Background="White"
+                                            Height="63" Margin="7,14,10,0">
+
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/rule.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="244" Margin="12,1,0,0">
+                                                    <TextBlock Text="Rule Setting" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
+                                                        BorderThickness="0,0,0,0"
+                                                        BorderBrush="#FF3778D6"
+                                                        Height="30">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Width="243" Margin="0" Orientation="Horizontal">
+                                                                <ComboBox Width="166" ItemsSource="{Binding RuleList}" SelectedIndex="0" x:Name="RuleCombo"
+                                                                          />
                                                             </StackPanel>
                                                         </StackPanel>
                                                     </Border>

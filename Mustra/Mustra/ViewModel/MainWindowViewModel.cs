@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,19 @@ namespace Mustra.ViewModel
     class MainWindowViewModel : INotifyPropertyChanged
     {
         private static MainWindowViewModel _instance = null;
+        private string _SelectedRule;
+        public string SelectedRule
+        {
+            get
+            {
+                return this._SelectedRule;
+            }
+            set
+            {
+                this._SelectedRule = value;
+                OnPropertyChanged("SelectedRule");
+            }
+        }
         public static MainWindowViewModel instance
         {
             get
@@ -43,6 +57,12 @@ namespace Mustra.ViewModel
         public ICommand LoadCMPage { get; set; }
         public ICommand LoadLCPage { get; set; }
 
+        private ObservableCollection<string> ruleList;
+        public ObservableCollection<string> RuleList
+        {
+            get { return this.ruleList; }
+            set { this.ruleList = value; }
+        }
         private MainWindowViewModel()
         {
             this.ContentView = null;
@@ -52,7 +72,10 @@ namespace Mustra.ViewModel
             lCUserControlViewModel = new LCUserControlViewModel();
             _predictUserControlViewModel = PredictUserControlViewModel.instance;
             _cMUserControlViewModel = new CMUserControlViewModel();
-
+            RuleList = new ObservableCollection<string>();
+            RuleList.Add("OneR");
+            RuleList.Add("Naive Bayesian");
+            RuleList.Add("J48");
         }
 
         public void sendNewInstance(InstancePacket instancePacket)
@@ -61,7 +84,7 @@ namespace Mustra.ViewModel
              string songN = instancePacket.SongName;
             string fanNum = instancePacket.FanNumber;
             string videoChk = instancePacket.VideoChk;
-
+            string rule = instancePacket.Rule;
             // 이제 여기서 이 정보를 서버에게 넘기면 됨
         }
 

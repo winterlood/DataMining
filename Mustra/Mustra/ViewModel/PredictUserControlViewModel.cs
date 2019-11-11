@@ -29,6 +29,7 @@ namespace Mustra.ViewModel
         private string _ASNR;
         private string _AFR;
         private string _SMR;
+        private string _rule;
         #endregion
 
         #region property
@@ -121,6 +122,13 @@ namespace Mustra.ViewModel
                 OnPropertyChanged("SMR");
             }
         }
+
+        public string Rule {
+            get => this._rule;
+            set {
+                this._rule = value;
+                OnPropertyChanged("Rule");
+            } }
         #endregion
 
         private PredictUserControlViewModel()

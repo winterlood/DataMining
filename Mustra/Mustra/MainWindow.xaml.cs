@@ -25,24 +25,47 @@ namespace Mustra
     {
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = MainWindowViewModel.instance;
+            InitializeComponent();
+            this.MouseLeftButtonDown += MoveWindow;
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         public void close(object sender, RoutedEventArgs r) 
         {
             this.Close();
         }
-
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+        }
+        void MoveWindow(object sender, MouseEventArgs e)
+        {
+            this.DragMove();
+        }
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             string artN = ArtistName.Text as string;
+            if (artN == "")
+            {
+                MessageBox.Show("Artist Name is empty!");return;
+            }
             string songN = SongName.Text as string;
+            if (songN == "")
+            {
+                MessageBox.Show("SongName is empty!"); return;
+            }
             string fanNum = FanNum.Text as string;
+            if (fanNum == "")
+            {
+                MessageBox.Show("FanNumber is empty!"); return;
+            }
             string videoChk = MVChk.IsChecked.Value? "yes":"no";
+            string rule = RuleCombo.SelectedItem as string;
 
             InstancePacket instancePacket = new InstancePacket(
-                artN,songN,fanNum,videoChk);
+                artN,songN,fanNum,videoChk, rule);
 
             MainWindowViewModel mwvm = MainWindowViewModel.instance;
 
@@ -53,7 +76,7 @@ namespace Mustra
 
             pucv.AFR = fanNum;
             pucv.SMR = videoChk;
-
+            pucv.Rule = rule;
             PredictButton.IsChecked = true;
             mwvm.loadPredictPage(artN);
         }

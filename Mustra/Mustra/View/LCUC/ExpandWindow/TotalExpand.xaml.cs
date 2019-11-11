@@ -39,6 +39,12 @@ namespace Mustra.View.LCUC.ExpandWindow
             image.MouseLeftButtonDown += image_MouseLeftButtonDown;
             image.MouseLeftButtonUp += image_MouseLeftButtonUp;
             image.MouseMove += image_MouseMove;
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
         private void image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
