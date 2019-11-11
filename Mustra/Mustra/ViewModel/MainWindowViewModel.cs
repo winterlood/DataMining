@@ -8,13 +8,27 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Mustra.InterFace;
+using Mustra.Model;
 
 namespace Mustra.ViewModel
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
+        private static MainWindowViewModel _instance = null;
+        public static MainWindowViewModel instance
+        {
+            get
+            {
+                if (_instance == null) _instance = new MainWindowViewModel();
+
+                return _instance;
+            }
+        }
         private object _contentView;
         private PredictUserControlViewModel _predictUserControlViewModel;
+        private CMUserControlViewModel _cMUserControlViewModel;
+        private LCUserControlViewModel lCUserControlViewModel;
+
         public object ContentView
         {
             get { return this._contentView; }
@@ -26,18 +40,45 @@ namespace Mustra.ViewModel
         }
 
         public ICommand LoadPredictPage { get; set; }
+        public ICommand LoadCMPage { get; set; }
+        public ICommand LoadLCPage { get; set; }
 
-        public MainWindowViewModel()
+        private MainWindowViewModel()
         {
             this.ContentView = null;
             this.LoadPredictPage = new Command(loadPredictPage,CE);
-            _predictUserControlViewModel = new PredictUserControlViewModel();
-
+            this.LoadCMPage = new Command(loadCMPage, CE);
+            this.LoadLCPage = new Command(loadLCPage, CE);
+            lCUserControlViewModel = new LCUserControlViewModel();
+            _predictUserControlViewModel = PredictUserControlViewModel.instance;
+            _cMUserControlViewModel = new CMUserControlViewModel();
 
         }
 
+        public void sendNewInstance(InstancePacket instancePacket)
+        {
+            string artN = instancePacket.ArtistName;
+             string songN = instancePacket.SongName;
+            string fanNum = instancePacket.FanNumber;
+            string videoChk = instancePacket.VideoChk;
+
+            // 이제 여기서 이 정보를 서버에게 넘기면 됨
+        }
+
         #region Page Change Operations
-        private void loadPredictPage(object e) =>this._contentView = this._predictUserControlViewModel;
+        public void loadPredictPage(object e)
+        {
+            this.ContentView = this._predictUserControlViewModel;
+        }
+       
+        private void loadLCPage(object e)
+        {
+            this.ContentView = this.lCUserControlViewModel;
+        }
+        private void loadCMPage(object e)
+        {
+            this.ContentView = this._cMUserControlViewModel;
+        }
         private Boolean CE(object e)=>true;
         #endregion
 
