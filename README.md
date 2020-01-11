@@ -1,4 +1,4 @@
-DataMiningProject
+Mustra
 ===
 
 - due : 2019.11.02 ~
